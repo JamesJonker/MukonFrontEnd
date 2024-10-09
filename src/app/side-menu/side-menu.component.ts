@@ -9,7 +9,6 @@ export class SideMenuComponent {
 
   @Input() showComponent: string = '';
 
-  // Emit changes to the parent
   @Output() componentValueChange: EventEmitter<string> = new EventEmitter<string>();
 
   setComponent(value: string): void{

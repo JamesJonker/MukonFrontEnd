@@ -34,7 +34,6 @@ export class RequisitionComponent {
     console.log("currentDate : ", currentDate)
 
   
-    //this.itemData = this.pathologyService.getBloodtestList();   
     let jsonVal = JSON.stringify(this.itemData);
 
     
@@ -105,7 +104,7 @@ export class RequisitionComponent {
   private addCheckboxes(): void {
 
     this.itemData.forEach((test : any) => {
-      this.testsArray.push(new FormControl()); // Use isActive from the JSON data
+      this.testsArray.push(new FormControl());
     });
   }
 
@@ -211,8 +210,6 @@ export class RequisitionComponent {
         age: this.requisitionForm.get('age')?.value, 
         contact_number: formValue.contact_number,
         selectedTests: selectedTests,
-        // itemData: formValue.itemData,  // This will contain the array of item data if populated?
-        // testsArray: formValue.testsArray // This will contain the array of selected test items
       };
   
       console.log('Requisition JSON:', JSON.stringify(requisitionData, null, 2));

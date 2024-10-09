@@ -57,7 +57,6 @@ export class ReportComponent {
     if (typeofReport === 'json') {
 
       this.preview = JSON.stringify(this.getRequisitionData());
-      // this.downloadFile('report.json', JSON.stringify(reportContent, null, 2), 'application/json');
     } else {
 
       this.preview = this.generateTextReport();
@@ -72,16 +71,6 @@ export class ReportComponent {
     console.log("reportType",reportType)
     const reportContent = this.getRequisitionData();
 
-    // if (this.reportForm.invalid) {
-    //   alert('Please select the report type.');
-    //   return;
-    // };
-    //   if (reportType === 'json') {
-    //     this.downloadFile('report.json', JSON.stringify(reportContent, null, 2), 'application/json');
-    //   } else {
-    //     const textData = this.createTextReportContent(reportContent);
-    //     this.downloadFile('report.txt', textData, 'text/plain');
-    //   }
     }
   
 
@@ -110,13 +99,11 @@ export class ReportComponent {
     if (typeofReport === 'json') {
 
       this.preview = JSON.stringify(this.getRequisitionData());
-      // this.downloadFile('report.json', JSON.stringify(reportContent, null, 2), 'application/json');
     } else {
 
       this.preview = this.createTextReportContent(this.receiveData.requisition);
       console.log("preview text",this.preview)
     }
-    // You can perform any logic you need here, such as enabling/disabling fields
   }
 
   async selectDirectory() {
