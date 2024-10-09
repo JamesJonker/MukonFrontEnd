@@ -1,0 +1,156 @@
+<div class="main_div">
+
+    <form [formGroup]="resultForm" (ngSubmit)="onSubmit()">
+
+      <div class="existing_req_info">
+        <div>
+          Add Requisitions results : 
+        </div>
+        <br>
+
+        <div>
+          <label for="requisitionId">Search for requisition Id : </label>
+          <div class="input_field">
+              <input class="input_text" type="number" name="requisitionId" placeholder="Requisition Id"
+                  id="numberInput" formControlName="requisitionId" type="text" placeholder="0001 - 9999"
+                  />
+                  <button class="buttons" type="button" (click)="searchReq()"><i class="fas fa-search" style="margin-right: 5px;"></i></button>
+          </div>
+          
+      </div>
+
+
+      </div>
+      <br>
+      @if(searchResult){
+
+        <div class="existing_req_info">
+
+          <div class="test_info">
+
+            <div>
+              <label for="time_sample_taken">Time Sample Taken:</label>
+              <div>
+
+                <input id="time_sample_taken" formControlName="time_sample_taken" readonly>
+              </div>
+            </div>
+          
+            <div>
+              <label for="first_name" readonly>First Name:</label>
+              <div>
+
+                <input id="first_name" formControlName="first_name" readonly>
+              </div>
+            </div>
+          
+            <div>
+              <label for="last_name">Last Name:</label>
+              <div>
+
+                <input id="last_name" formControlName="last_name" readonly>
+              </div>
+            </div>
+          
+            <div>
+              <label for="gender">Gender:</label>
+              <div>
+
+                <input id="gender" formControlName="gender" readonly>
+              </div>
+            </div>
+          
+            <div>
+              <label for="dob">Date of Birth:</label>
+              <div>
+
+                <input id="dob" formControlName="dob" readonly>
+              </div>
+            </div>
+          
+            <div>
+              <label for="age">Age:</label>
+              <div>
+
+                <input id="age" formControlName="age" readonly>
+              </div>
+            </div>
+          
+            <div>
+              <label for="contact_number">Contact Number:</label>
+              <div>
+
+                <input id="contact_number" formControlName="contact_number" readonly>
+              </div>
+            </div>
+          </div>
+          </div>
+        
+
+        <div class="existing_req_info">
+          <div>
+            Add Results : 
+          </div>
+        <div>
+
+        <div formArrayName="selectedTests">
+          <div *ngFor="let test of selectedTests.controls; let i = index" [formGroupName]="i">
+
+            <div class="test_info">
+              <div>
+                
+                <label for="mnemonic">Mnemonic:</label>
+                <div>
+                  <input class="input_text" id="mnemonic" formControlName="mnemonic" readonly>
+                </div>
+              </div>
+        
+              <div>
+                <label for="description">Description:</label>
+                <div>
+
+                  <input class="input_text" id="description" formControlName="description" readonly>
+                </div>
+              </div>
+        
+              <div>
+                <label for="result">Result:</label>
+
+                <!-- <div formArrayName="results">
+                  <div *ngFor="let resultGroup of test.get('results')?.controls; let j = index" [formGroupName]="j">
+                    <input formControlName="result" placeholder="Enter result" />
+                  </div>
+                </div>
+                 -->
+                <div>
+
+                  <input class="input_text" id="result" formControlName="result">
+                </div>
+              </div>
+        
+              <div>
+                <label for="comment">Comment:</label>
+                <div>
+                  <input class="input_text" id="comment" formControlName="comment">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        </div>
+      }
+ 
+      <div class="existing_req_buttons">
+        <div class="button_grid">
+          <button class="buttons" type="submit">Save results</button>
+          <button class="buttons" type="button" (click)="setComponent('showReport')">Generate report</button>
+        </div>
+      </div>
+
+    </form>
+    
+
+    
+    
+    </div>

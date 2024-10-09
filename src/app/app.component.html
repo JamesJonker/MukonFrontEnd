@@ -1,0 +1,30 @@
+<!-- <div>
+ 
+  <app-requisition>
+
+  </app-requisition>
+</div> -->
+<div class="main-layout">
+  <app-side-menu (componentValueChange)="getCompValue($event)"></app-side-menu>
+  <div class="main-content">
+    <router-outlet>
+      @if(showComponent === 'viewRequisitions'){
+        <app-existing-requisitions (componentValueChange)="getCompValue($event)" >
+
+        </app-existing-requisitions>
+      }@else if (showComponent === 'CreatreRequisition') {
+        <app-requisition (componentValueChange)="showComponent = $event">
+        </app-requisition>
+      }
+      @else if (showComponent === "showResults") {
+        <app-req-results [receiveData]="this.componentData" (componentValueChange)="showComponent = $event">
+
+        </app-req-results>
+      }
+      @else if ((showComponent === "showReport")) {
+
+        <app-report [receiveData]="this.componentData"></app-report>
+      }
+    </router-outlet>
+  </div>
+</div>

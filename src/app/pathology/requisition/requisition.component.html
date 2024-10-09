@@ -1,0 +1,134 @@
+<div class="main_div">
+    <br>
+    <form [formGroup]="requisitionForm" action="submit">
+        <div class="patient_info">
+            <div>
+                <label for="requisitionId">Requisition Id : </label>
+                <div class="input_field">
+                    <input class="input_text" type="number" name="requisitionId" placeholder="Requisition Id"
+                        id="numberInput" formControlName="requisitionId" type="text" placeholder="0001 - 9999"
+                        (blur)="onBlur()" />
+                    @if(requisitionId?.invalid && requisitionId?.touched){
+                    <div>
+                        @if(requisitionId?.errors?.['required']){
+                        <small>
+                            The Requisition Id is required.
+                        </small>
+                        }@else if (requisitionId?.errors?.['pattern']) {
+                        <small>
+                            Please enter a valid 4-digit number.
+                        </small>
+                        }@else if (requisitionId?.errors?.['min'] || requisitionId?.errors?.['max']) {
+                        <small>
+                            The number must be between 0001 and 9999.
+                        </small>
+                        }
+
+                    </div>
+
+                    }
+                </div>
+            </div>
+            <div>
+                <label for="time_sample_taken">Time Sample Taken : </label>
+                <div class="input_field">
+                    <input class="input_text" id="time_sample_taken" name="time_sample_taken" type="datetime-local"
+                        formControlName="time_sample_taken" required />
+                </div>
+            </div>
+            <div></div>
+            <div></div>
+            <div class="input_field">
+                <label for="first_name">First name : </label>
+                <div class="input_field">
+                    <input class="input_text" name="first_name" id="first_name" formControlName="first_name" type="text"
+                        placeholder="First name" (blur)="onBlur()" />
+                    @if(first_name?.invalid && first_name?.touched){
+                    <div>
+                        @if(first_name?.errors?.['required']){
+                        <small>
+                            This is required.
+                        </small>
+                        }
+                    </div>
+
+                    }
+                </div>
+            </div>
+            <div class="input_field">
+                <label for="last_name">Last name : </label>
+                <div class="input_field">
+                    <input class="input_text" type="text" name="last_name" placeholder="Last name"
+                    formControlName="last_name">
+                </div>
+            </div>
+            <div class="input_field">
+                <label for="gender">Gender: </label>
+                <div class="input_field">
+                    <select class="input_text" id="gender" formControlName="gender">
+                        <option value="">Gender</option>
+                        <option *ngFor="let option of genderOptions" [value]="option">{{ option }}</option>
+                    </select>
+                    @if(gender?.invalid && gender?.touched){
+                    @if(gender?.errors?.['required']){
+                    <small>
+                        Please select an option.
+                    </small>
+                    }
+                    }
+                </div>
+            </div>
+            <div class="input_field">
+                <label for="dob">Date of birth: </label>
+                <div class="input_field">
+                    <input class="input_text" id="dob" name="dob" type="date" formControlName="dob" required />
+
+                    @if(requisitionForm.errors?.['dateOfBirthInvalid']){
+                    <small style="color: red;">Date of Birth cannot be greater than Current Date.</small>
+                    }
+
+                </div>
+            </div>
+            <div class="input_field">
+                <label for="age">Age: </label>
+                <div class="input_field">
+                    <input class="input_text" id="age" name="age" type="text" formControlName="age" required />
+                </div>
+            </div>
+            <div class="input_field">
+                <label for="contact_number">Contact number: </label>
+                <div class="input_field">
+                    <input id="contact_number" formControlName="contact_number" type="text" placeholder="+(27)" />
+                    @if(requisitionForm.get('contact_number')?.invalid &&
+                    (requisitionForm.get('contact_number')?.touched || requisitionForm.get('contact_number')?.dirty)){
+                    @if(requisitionForm.get('contact_number')?.errors?.['required']){
+                    <small>Cellphone number is required.</small>
+                    }@else if (requisitionForm.get('contact_number')?.errors?.['invalidCellphone']) {
+                    <small>Invalid cellphone number. Must be 10 digits.</small>
+                    }
+                    }
+                </div>
+            </div>
+        </div>
+        <br>
+        <div formArrayName="testsArray" class="test_info">
+            @for(item of itemData; track item; let itemIndex = $index){
+            <div class="input_field">
+                <label>
+                    <input type="checkbox"
+                    [formControlName]="itemIndex"   
+                        
+                      />
+                      {{ item.mnemonic }} - {{ item.description }}
+                </label>
+
+            </div>
+            }
+        </div>
+        <br>
+        <div class="button_div">    
+            <button class="submit_button" (click)="onSubmit()">Submit</button>
+        </div>
+    </form>
+    <br>
+</div>

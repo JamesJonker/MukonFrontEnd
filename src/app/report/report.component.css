@@ -1,0 +1,37 @@
+.container{
+    margin: auto;
+    margin-top: 20px;
+    display: grid;
+    /* grid-template-columns: 25% 25% 25% 25%;  */
+    /* border-top: 1px solid rgb(119, 119, 218); */
+    max-width: 100%;
+    max-height: 100%;
+    padding: 15px;
+    /* background-color: white; */
+    border-radius: 8px 8px 8px 8px;
+    /* border: 1px solid black; */
+  }
+
+  .report_top_row{
+    border-radius: 8px 8px 8px 8px;
+  
+    display: grid;
+    grid-template-columns: 30% 70%;   
+    height: 85px;
+    width: 98%;
+    background-color: white;
+    padding: 10px;
+  }
+  .split_div{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    
+  }
+  .buttons{
+    padding: 5px;
+    border-radius: 6px;
+    background-color: #1c3a57;
+    color: white;
+    margin: 5px;
+  }
+  

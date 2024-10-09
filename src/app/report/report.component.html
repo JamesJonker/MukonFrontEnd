@@ -1,0 +1,39 @@
+<div class="container">
+    <form [formGroup]="reportForm" (ngSubmit)="generateReport()" >
+        <div class="report_top_row">
+            <div class="split_div">
+                <div>
+                    <label>Select Report Format:</label>
+                    <!-- Radio buttons for report type -->
+                </div>
+                <div>
+                    <div>
+
+                        <input type="radio" id="json" formControlName="reportType" value="json"/>
+                        <label for="json">JSON</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="txt" formControlName="reportType" value="txt" />
+                        <label for="txt">TXT</label>
+                    </div>
+                </div>
+                <div>
+                    <div style="margin-top: 10px;">
+                        <button class="buttons" type="submit">
+                          <i class="fas fa-folder-open" style="margin-right: 5px; color: white;"></i> Save Report
+                        </button>
+                      </div>
+                </div>
+                  <div *ngIf="reportForm.get('reportType')?.invalid && reportForm.get('reportType')?.touched">
+                    <small class="error">Please select a report format.</small>
+                  </div>
+            </div>
+            <div class="preview">
+                {{this.preview}}
+            </div>
+        </div>
+
+    </form>
+      
+
+</div>

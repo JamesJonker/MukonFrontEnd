@@ -1,0 +1,44 @@
+<div class="container">
+<div class="req_grid">
+  @if(req_data != 'Nothing found'){
+
+    @for(requisition of this.req_data; track requisition){
+  
+      <div class="req_row">
+        <div>
+          Requisition Id : {{requisition.requisitionId}}
+        </div>
+        <div>
+          {{requisition.first_name}} {{requisition.last_name}} 
+          <div>
+            {{requisition.contact_number}}
+          </div>
+          <div>
+            {{requisition.dob}}
+          </div>
+  
+          <div>
+            {{requisition.gender}}
+          </div>   
+        </div>     
+        <div>
+          Tests requisted: {{requisition.selectedTests.length}}
+          <div>
+            Results :
+          </div>
+        </div> 
+        <div><button class="buttons" (click)="addResults({requisition})">Add results</button></div>
+      </div>
+      <br>
+  
+    }
+  }@else {
+
+      <div class="req_row_nothing">
+        <h3 >No Records found</h3>
+      </div>
+  }
+
+  <!-- <input type="text"> -->
+</div>
+</div>
